@@ -1,6 +1,4 @@
-# Akka HTTP microservice example
-
-[![Join the chat at https://gitter.im/theiterators/akka-http-microservice](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/theiterators/akka-http-microservice?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Akka HTTP microservice with CORS handler example
 
 This project demonstrates the [Akka HTTP](http://doc.akka.io/docs/akka-stream-and-http-experimental/current/scala.html) library and Scala to write a simple REST (micro)service. The project shows the following tasks that are typical for most Akka HTTP-based projects:
 
@@ -14,6 +12,7 @@ This project demonstrates the [Akka HTTP](http://doc.akka.io/docs/akka-stream-an
 * error handling,
 * issuing requests to external services,
 * testing with mocking of external services.
+* CORS Handler
 
 The service in the template provides two REST endpoints - one which gives GeoIP info for given IP and another for calculating geographical distance between given pair of IPs. The project uses the service [ip-api](http://ip-api.com/) which offers JSON IP and GeoIP REST API for free for non-commercial use.
 
@@ -31,51 +30,24 @@ $ sbt
 With the service up, you can start sending HTTP requests:
 
 ```
-$ curl http://localhost:9000/ip/8.8.8.8
-{
-  "city": "Mountain View",
-  "query": "8.8.8.8",
-  "country": "United States",
-  "lon": -122.0881,
-  "lat": 37.3845
-}
+$ curl http://localhost:9000/
+[{
+  "releaseDate": "March 19, 2016",
+  "description": "Leaf rake with 48-inch wooden handle.",
+  "price": 19.95,
+  "starRating": 3.2,
+  "productName": "Leaf Rake",
+  "productId": 1.0,
+  "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png",
+  "productCode": "GDN-0011"
+}]
 ```
 
-```
-$ curl -X POST -H 'Content-Type: application/json' http://localhost:9000/ip -d '{"ip1": "8.8.8.8", "ip2": "93.184.216.34"}'
-{
-  "distance": 4347.624347494718,
-  "ip1Info": {
-    "city": "Mountain View",
-    "query": "8.8.8.8",
-    "country": "United States",
-    "lon": -122.0881,
-    "lat": 37.3845
-  },
-  "ip2Info": {
-    "city": "Norwell",
-    "query": "93.184.216.34",
-    "country": "United States",
-    "lon": -70.8228,
-    "lat": 42.1508
-  }
-}
-```
-
-### Testing
-
-Execute tests using `test` command:
-
-```
-$ sbt
-> test
-```
-
-## Author & license
+## Author e
 
 If you have any questions regarding this project contact:
 
-Łukasz Sowa <lukasz@theiterators.com> from [Iterators](http://www.theiterators.com).
+Hari Ramesh - haryramesh@hotmail.com.
 
-For licensing info see LICENSE file in project's root directory.
+
 # akka-http-microservice
